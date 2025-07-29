@@ -134,3 +134,10 @@ document.addEventListener("DOMContentLoaded", function () {
     document.querySelector(".slide").prepend(items[items.length - 1]);
   });
 });
+
+
+// ============== Start Footer Section ==============
+document.addEventListener("DOMContentLoaded", function () {
+    document.getElementById("getyear").textContent = new Date().getUTCFullYear();
+});
+// ============== End Footer Section ==============

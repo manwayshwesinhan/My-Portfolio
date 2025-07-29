@@ -141,3 +141,37 @@ document.addEventListener("DOMContentLoaded", function () {
     document.getElementById("getyear").textContent = new Date().getUTCFullYear();
 });
 // ============== End Footer Section ==============
+
+
+// Start Back To Top
+document.addEventListener("DOMContentLoaded", function () {
+  const backToTopBtn = document.querySelector(".btn-backtotops");
+
+  backToTopBtn.style.display = "none";
+
+  window.addEventListener("scroll", function () {
+    const scrollTop = window.scrollY;
+
+    if (scrollTop >= 370) {
+      // Fade in
+      backToTopBtn.style.display = "block";
+      backToTopBtn.style.opacity = "1";
+    } else {
+      // Fade out
+      backToTopBtn.style.opacity = "0";
+      // After fade out, hide element
+      setTimeout(() => {
+        if (backToTopBtn.style.opacity === "0") {
+          backToTopBtn.style.display = "none";
+        }
+      }, 1000);
+    }
+  });
+
+  backToTopBtn.addEventListener("click", function (e) {
+    e.preventDefault();
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  });
+});
+// End Back To Top
+

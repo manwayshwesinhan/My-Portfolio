@@ -17,6 +17,7 @@
   --color-bg: #e1e1e1;
   --color-text: #212121;
   --color-tertiary: #fa87df;
+  --primary-color: hsl(330,87%,17%);
 
   --shadow: 6px 6px 12px #bababa, -6px -6px 12px #ffffff;
   --inner-shadow: inset 6px 6px 12px #bababa, inset -6px -6px 12px #ffffff;
@@ -187,6 +188,29 @@ section {
 .scrollbar::-webkit-scrollbar-button {
   width: 0.8rem;
 }
+
+/* =============== Start Back to Top =============== */
+.btn-backtotops{
+    background-color: var(--color-tertiary);
+    color: #fff;
+    padding: 10px;
+    border-radius: 10px;
+
+    position: fixed;
+    right: 10px;
+    bottom: 10px;
+
+    z-index: 100;
+    opacity: 0;
+    transition: var(--transition);
+
+    display: none;
+}
+/*=============== End Back to Top ===============*/
+/* Header */
+header {
+    position: relative;
+}
 /*=============== NAVBAR ===============*/
 nav {
   padding: 0.3rem 0;
@@ -267,7 +291,7 @@ nav.scrolling {
   display: none;
 }
 
-/*=============== HOME ===============*/
+/*=============== START HOME SECTION ===============*/
 .home {
   width: 100%;
 }
@@ -334,7 +358,9 @@ nav.scrolling {
   -ms-border-radius: 0.5rem;
   -o-border-radius: 0.5rem;
 }
-/*=============== ABOUT ===============*/
+/*=============== END HOME SECTION ===============*/
+
+/*=============== START ABOUT SECTION ===============*/
 .about-container {
   display: grid;
   margin-top: 150px;
@@ -460,7 +486,9 @@ svg {
   top: 0;
   left: 0;
 }
-/*=============== SKILLS ===============*/
+/*=============== END ABOUT SECTION ===============*/
+
+/*=============== START SKILLS SECTION ===============*/
 section.skills{
   width: 100%;
 }
@@ -617,13 +645,14 @@ section.skills{
 .skills-content.active-content {
   display: grid; 
 }
-/*=============== CERTIFICATE ===============*/
+/*=============== END SKILLS  SECTION ===============*/
+
+/*=============== START CERTIFICATE SECTION ===============*/
 section.certificate{
   width: 100%;
 
   overflow: hidden;
 }
-
 .certificate-container{
   width: 1200px;
   height: 600px;
@@ -631,14 +660,12 @@ section.certificate{
 
   position: relative;
 }
-
 .certificate-header h2 {
   font-weight: 500;
   text-align: center;
   margin-top: 50px;
   margin-bottom: 30px;
 }
-
 .certificate-container .slide .item {
   display: inline-block;
   width: 200px;
@@ -651,7 +678,6 @@ section.certificate{
   top: 50%;
   transform: translate(0, -50%);
 }
-
 .slide .item:nth-child(1),
 .slide .item:nth-child(2){
     top: 0;
@@ -675,6 +701,39 @@ section.certificate{
     left: calc(50% + 660px);
     opacity: 0;
 }
+.slide .item:nth-child(n+3){
+    transition: var(--transition);
+}
+.slide .item:nth-child(n+3):hover {
+  transform: scale(1.05) translateY(-50%);
+  box-shadow: var(--shadow);
+  z-index: 2;
+}
+.slide .item:nth-child(n+3)::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  border-radius: 20px;
+  z-index: 1;
+}
+
+.slide .item:nth-child(n+3):hover::before {
+  opacity: 1;
+}
+
+.slide .item:nth-child(n+3) .slide-content {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  z-index: 2;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.4s ease;
+  display: block;
+}
  
 .item .slide-content{
     position: absolute;
@@ -683,11 +742,15 @@ section.certificate{
     width: 300px;
     text-align: left;
     color: var(--color-tertiary);
+    
     transform: translate(0, -50%);
     font-family: system-ui;
     display: none;
 }
 
+.slide .item:nth-child(n+3):hover .slide-content {
+  display: none;
+}
 .slide .item:nth-child(2) .slide-content{
     display: block;
 }
@@ -728,7 +791,7 @@ section.certificate{
         transform: translate(0);
         filter: blur(0);
     }
-} 
+}
  
 .buttons{
     width: 100%;
@@ -736,7 +799,6 @@ section.certificate{
     position: absolute;
     bottom: 20px;
 }
-
 .buttons button{
     width: 40px;
     height: 35px;
@@ -745,15 +807,15 @@ section.certificate{
     border: none;
     cursor: pointer;
     margin: 0 5px;
-    transition: 0.3s;
+    transition: var(--transition);
 }
-
 .buttons button:hover{
     background: var(--color-tertiary);
-    color: #fff;
+    color: var(--color-bg);
 } 
-/*=============== PORTFOLIO ===============*/
+/*=============== END CERTIFICATE SECTION ===============*/
 
+/*=============== START PORTFOLIO SECTION ===============*/
 .portfolio{
   padding: 0 !important;
   margin-top: 50px;
@@ -866,7 +928,6 @@ section.certificate{
   -ms-transform: scale(1.1, 1.1);
   -o-transform: scale(1.1, 1.1);
 }
-
 .portfolio-tab-content {
     display: flex;
     gap: 2rem;
@@ -901,7 +962,6 @@ section.certificate{
   filter: none;
   transform: scale(1);
 }
-
 .live-preview-btn {
     position: relative;
     margin-top: 5px;
@@ -917,21 +977,15 @@ section.certificate{
     display: inline-block;
     user-select: none;
 }
-
- 
 .live-preview-btn span {
     display: block;
     transition: transform 0.4s ease, opacity 0.4s ease;
     will-change: transform, opacity;
 }
-
-
 .live-preview-btn .text-default {
     position: relative;
     z-index: 2;
 }
-
- 
 .live-preview-btn .text-hover {
     position: absolute;
     left: 50%;
@@ -940,22 +994,17 @@ section.certificate{
     opacity: 0;
     z-index: 1;
 }
-
-
 .live-preview-btn:hover {
     background-color: #5fdc83;
 }
-
 .live-preview-btn:hover .text-default {
     transform: translateY(-100%);
     opacity: 0;
 }
-
 .live-preview-btn:hover .text-hover {
     transform: translate(-50%, -50%);
     opacity: 1;
 }
-
 .live-preview-btn:hover {
   background-color: var(--color-tertiary);
 }
@@ -973,7 +1022,6 @@ section.certificate{
   transform: translate(-50%, -50%);
   transition: transform 0.1s ease;
 }
-
 .live-preview-btn:hover ~ .custom-cursor {
   transform: scale(1.2);
   background-color: var(--color-tertiary);
@@ -985,13 +1033,24 @@ section.certificate{
 .tab-content.active-content {
   display: grid;
 } */
+/*=============== END PORTFOLIO SECTION ===============*/
 
-/*=============== CONTACT ===============*/
+/*===============  START CONTACT SECTION ===============*/
 .contact-content .row {
   margin-top: -65px;
   display: flex;
   justify-content: center;
   gap: 1rem;
+}
+.contact-content .box {
+    transition: var(--transition);
+}
+.contact-content .box:hover{
+    color: var(--color-tertiary);
+    box-shadow: 1px 1px 10px var(--color-tertiary);
+}
+.contact-content .box:hover i{
+    color: var(--color-text);
 }
 .content .title{
   transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
@@ -1069,6 +1128,8 @@ section.certificate{
   padding: 1rem 0;
   box-shadow: var(--shadow);
 }
+/*=============== END PORTFOLIO SECTION ===============*/
+
 /*=============== RESPONSIVE TABLET ===============*/
 @media (max-width: 1050px) {
   #menu-btn {
@@ -1192,6 +1253,7 @@ section.certificate{
     max-width: 25rem;
   }
   .home .left {
+    margin-top: -100px;
     text-align: center;
   }
   .about-container {
@@ -1285,7 +1347,7 @@ section.certificate{
 /* ========== Ipad Mini =============== */
 @media (max-width: 769px) {
   .home .right img {
-    max-width: 15rem;
+    max-width: 20rem;
   }
   .about .left img {
     max-height: 15rem;
@@ -1309,13 +1371,13 @@ section.certificate{
   }
   .home .right img {
     display: block;
-    height: 14rem;
+    height: 100%;
     max-width: 100%;
     margin-top: -15px;
   }
   .home .left {
     position: relative;
-    margin-top: -20px;
+    margin-top: -120px;
     z-index: 9999;
   }
   .home .social-icons {
@@ -1377,6 +1439,8 @@ section.certificate{
     flex-direction: column;
     align-items: center;
     position: static;
+    max-height: none !important;
+    padding-bottom: 0 !important;
   }
 
   .certificate-container .slide .item {
@@ -1388,7 +1452,11 @@ section.certificate{
     left: 0 !important;
     top: 0 !important;
   }
-
+  .certificate-container  .slide .item:nth-child(n) {
+    opacity: 1 !important;
+    position: relative !important;
+    left: 0 !important;
+    }
   .certificate-container .item .slide-content {
     left: 20px;
     width: calc(100% - 40px);
@@ -1442,6 +1510,7 @@ section.certificate{
   .contact-content .box {
     width: 380px;
     margin: auto;
+    text-align: center;
     padding: 1rem 1rem;
     border-radius: 0.5rem;
     -webkit-border-radius: 0.5rem;
@@ -1449,7 +1518,6 @@ section.certificate{
     -ms-border-radius: 0.5rem;
     -o-border-radius: 0.5rem;
     box-shadow: var(--shadow);
-    text-align: center;
   }
 
   .contact-content .contact-form {

@@ -12,25 +12,38 @@
     <title>My Portfolio</title>
 </head>
 <body>
-    <!-- START NAVBAR -->
-    <nav>
-      <div class="container nav-container">
-        <a href="index.html" class="logo">NS<span>SH</span></a>
-        <ul class="navlist">
-          <li><a href="#home">home</a></li>
-          <li><a href="#about">about</a></li>
-          <li><a href="#skills">skills</a></li>
-          <li><a href="#portfolio">portfolio</a></li>
-          <li><a href="#certificate">certificate</a></li>
-          <li><a href="#contact">contact</a></li>
-        </ul>
-        <div class="nav-icons">
-          <div id="theme-btn" class="ri-moon-line"></div>
-          <div id="menu-btn" class="ri-menu-line"></div>
+
+    <!-- START Back to Top -->
+        <div class="fixed-bottom">
+            <a href="#" class="btn btn-backtotops overlay"><i class="ri-arrow-up-line"></i></a>
         </div>
-      </div>
-    </nav>
-    <!-- END NAVBAR -->
+    <!-- END Back to Top -->
+    
+    <!-- START Header Section -->
+    <header>
+        
+        <!-- START NAVBAR -->
+        <nav>
+        <div class="container nav-container">
+            <a href="index.html" class="logo">NS<span>SH</span></a>
+            <ul class="navlist">
+            <li><a href="#home">home</a></li>
+            <li><a href="#about">about</a></li>
+            <li><a href="#skills">skills</a></li>
+            <li><a href="#portfolio">portfolio</a></li>
+            <li><a href="#certificate">certificate</a></li>
+            <li><a href="#contact">contact</a></li>
+            </ul>
+            <div class="nav-icons">
+            <div id="theme-btn" class="ri-moon-line"></div>
+            <div id="menu-btn" class="ri-menu-line"></div>
+            </div>
+        </div>
+        </nav>
+        <!-- END NAVBAR -->
+
+    </header>
+    <!-- END Header Section -->
 
     <!-- START HOME SECTION -->
     <section class="home" id="home">
@@ -497,18 +510,18 @@
           </div>
         </div>
         <div class="row">
-            <form action="" class="contact-form">
+            <form action="" class="contact-form" id="contact-form">
                 <div class="form-box">
-                    <input type="text" placeholder="Enter Your Name" required>
+                    <input type="text" name="name" placeholder="Enter Your Name" required>
                 </div>
                 <div class="form-box">
-                    <input type="email" placeholder="Enter Your Email" required>
+                    <input type="email" name="email" placeholder="Enter Your Email" required>
                 </div>
                 <div class="form-box">
-                    <input type="text" placeholder="Email Subject" required>
+                    <input type="text" name="subject" placeholder="Email Subject" required>
                 </div>
                 <div class="form-box">
-                    <textarea name="Message" id="" cols="10" rows="10" placeholder="Your Message"></textarea>
+                    <textarea name="Message" name="Message" id="" cols="10" rows="10" placeholder="Your Message"></textarea>
                 </div>
                 <button type="submit" class="btn overlay">
                     <span>Send Message</span>

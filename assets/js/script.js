@@ -73,7 +73,7 @@ themeBtn.onclick = function () {
 
 // ============== TYPED JS ================
 const typed = new Typed(".multiple-text", {
-  strings: ["Junior Software Developer", "Junior Front End Developer", "UI/UX Junior Web Developer"],
+  strings: ["Junior Software Developer", "Junior Front End Developer", "Junior Web Developer"],
   typeSpeed: 100,
   backSpeed: 100,
   backDelay: 1000,
